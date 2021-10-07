@@ -1,0 +1,103 @@
+﻿@namespace webapp
+
+@{
+    int eventId = (int)ViewData["eventId-key"];
+    List<GearImage> gearImages = new List<GearImage>();
+    gearImages = (List<GearImage>)ViewData["gearImages-key"];
+}
+
+<br />
+<p style="font-size: 2em">RENT - A - GEAR</p>
+<div class="divGearList">@await Component.InvokeAsync("RentGear", new { eventId = @eventId, Mode = "AllGear" })</div>
+
+<div class="divAddedGear">@await Component.InvokeAsync("RentGear", new { eventId = @eventId, Mode = "MyCart" })</div>
+<br />
+<br />
+<a class="btn btn-info" href="../RentaGear/Rent?eventId=@eventId" ajax-poziv="da" ajax-rezultat="ajaxDiv">Rent items for cart!</a>
+
+@await Component.InvokeAsync("RentGear", new { eventId = @eventId, Mode = "Purchased" })
+
+<br/>
+<br />
+<a class="btn btn-success" href="../Event">Skip to event list</a>
+
+<script>
+        $(document).ready(function () {
+            $("#myInput1").on("keyup", function () {
+                var value = $(this).val().toLowerCase();
+                $("#myTable1 tr").filter(function () {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+            });
+            $("#myInput2").on("keyup", function () {
+                var value = $(this).val().toLowerCase();
+                $("#myTable2 tr").filter(function () {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+            });
+
+            var EFO = document.querySelector('.entryFORM');
+            EFO.style.height = "90%";
+            EFO.style.width = "95%";
+            EFO.style.transform = "translate(2%, -105%)";
+
+            var DGL = document.querySelector('.divGearList');
+            DGL.style.position = "relative";
+            DGL.style.height = "50%";
+            DGL.style.width = "50%";
+            DGL.style.display = "inline-block";
+            DGL.style.float = "left";
+            //DGL.style.border = "2px solid blue";
+            DGL.style.overflow = "auto";
+
+            var DAG = document.querySelector('.divAddedGear');
+            DAG.style.position = "relative";
+            DAG.style.height = "50%";
+            DAG.style.width = "50%";
+            DAG.style.display = "inline-block";
+            DAG.style.float = "right";
+            //DAG.style.border = "2px solid green";
+            DAG.style.overflow = "auto";
+
+            //positioning the images of gear on stage
+
+            var wrapperIMG = document.querySelector('.wrapperIMG');
+            //wrapperIMG.style.transform = "translate(50%, 50%)";
+
+            //setTimeout(function () {
+
+            var GI = document.getElementsByClassName("gearImagesClass");
+
+            if (GI.length >= 1) {
+
+                /*for (var i = 0; i < GI.length; i++) {
+
+                    //Doesn't work, leaves 1 element undeleted because array shrinks everytime
+
+                    GI[i].remove();
+
+                }*/
+
+                while(GI.length > 0) {
+                    //GI[0].parentNode.removeChild(GI[0]);
+                    //OR
+                    GI[0].remove();
+                }
+
+            }
+
+                @if(gearImages != null)
+                {
+                    foreach (var x in gearImages)
+                    {
+                        <text>wrapperIMG.insertAdjacentHTML('beforeend', "<div class='gearImagesClass' style='height: @x.ContainerH%; width: @x.ContainerW%; position: absolute; z-index: 100; transform: skew(@x.SkewX, @x.SkewY);'><div style='height: 100%; width: 100%; transform: scale(@x.ScaleX, @x.ScaleY);'><img src='@x.ImageLink' style='height: 100%; width:auto; transform: translate(@x.TranslateX%, @x.TranslateY%)'> </div> </div>");</text>;
+                    }
+                }
+
+            //}, 1000);
+
+
+
+
+            });
+</script>

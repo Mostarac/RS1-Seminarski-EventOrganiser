@@ -1,0 +1,74 @@
+﻿.container {
+    background-repeat: round;
+    min-width: 100%;
+    width: 100%;
+    position: fixed;
+    height: 100%;
+    z-index: -1;
+    padding: 0;
+}
+
+body {
+    padding-top: 50px;
+    padding-bottom: 0px;
+    position: fixed;
+}
+
+.myfooter {
+    position: fixed;
+}
+
+.user-register,
+.user-login {
+    z-index: 100000;
+}
+
+.user-login {
+    position: absolute;
+    height: 100%;
+}
+
+.user-login  > .row {
+    height: 50%;
+    overflow: auto;
+    margin: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+}
+
+.user-register > .row > form {
+    overflow-x: scroll;
+    height: 450px;
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+.user-login > .row > div > h4,
+.user-register > .row > div > h4 {
+    color: #fff;
+    font-weight: bold;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.navbar-header {
+    margin-left: 8% !important;
+}
+
+.navbar-collapse {
+    margin-right: 8% !important;
+}
+
+.nav-bar {
+    top: -50px;
+}
+
+.user-login label,
+.user-register label {
+    font-weight: normal;
+}

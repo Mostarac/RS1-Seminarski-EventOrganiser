@@ -1,0 +1,89 @@
+﻿
+@{
+    RentGearIndexVM RGIVM = (RentGearIndexVM)ViewData["RentGearIndex-key"];
+}
+
+@if (RGIVM.Mode == "AllGear")
+{
+    <div style="position: sticky; top: 0; height: 30%; z-index: 500; background-color: rgb(250,240,230);">
+        <p>Gear</p>
+        <input class="form-control" id="myInput1" type="text" placeholder="Search..">
+    </div>
+    <br>
+    <div style="position: absolute; top: 35%; overflow: auto;">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th> </th>
+                </tr>
+            </thead>
+            <tbody id="myTable1">
+                @foreach (var x in RGIVM.Rows)
+                {
+                    <tr>
+                        <td>@x.GearName</td>
+                        <td style="transform: translate(0, 10%);">@x.Price</td>
+                        <td><a ajax-poziv="da" ajax-rezultat="ajaxDiv" style="transform: scale(0.6);" href="../RentaGear/AddGear?eventId=@x.EventId&gearId=@x.GearId" class="btn btn-primary">+</a></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}
+else if (RGIVM.Mode == "MyCart")
+{
+    <div style="position: sticky; top: 0; height: 30%;  z-index: 500; background-color: rgb(250,240,230);">
+        <p>In your cart</p>
+        <input class="form-control" id="myInput2" type="text" placeholder="Search..">
+    </div>
+    <br>
+    <div style="position: absolute; top: 35%;  overflow: auto;">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Price</th>
+                </tr>
+            </thead>
+            <tbody id="myTable2">
+                @foreach (var x in RGIVM.Rows)
+                {
+                    <tr>
+                        <td>@x.GearName</td>
+                        <td style="transform: translate(0, 10%);">@x.Price</td>
+                        <td><a ajax-poziv="da" ajax-rezultat="ajaxDiv" style="transform: scale(0.6);" href="../RentaGear/RemoveGear?eventId=@x.EventId&eventGearId=@((int)x.EventGearId)" class="btn btn-danger">-</a></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}
+else if (RGIVM.Mode == "Purchased")
+{
+    <div style="float: right; width: 50%; position: relative; overflow: auto; height: 25%;">
+        <div style="position: sticky; top: 0; z-index: 500; background-color: rgb(250,240,230);">
+            <p>Already purchased</p>
+        </div>
+        <div style="overflow: auto;">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Price</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var x in RGIVM.Rows)
+                    {
+                        <tr>
+                            <td>@x.GearName</td>
+                            <td style="transform: translate(0, 10%);">@x.Price</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+}

@@ -1,0 +1,47 @@
+﻿@model System.Collections.Generic.IEnumerable<webapp.ViewModels.EventVm>
+
+@{
+    ViewData["Title"] = "Home Page";
+    ViewData["_layoutBackgroundImg-key"] = "url(../images/bar-blur-blurred-801863.jpg)";
+}
+
+<div class="dashboard-info">
+    <p>Give hope. Inspire.</p>
+    <p>Change lives. Share your story today.</p>
+</div>
+
+<div class="item">
+    <div id="content-slider" class="content-slider">
+        @foreach (var item in Model)
+        {
+            <div class="example card">
+                <div class="wrapper" style="background: url(@item.ImageUrl) center/cover no-repeat">
+                    <div class="header">
+                        <div class="date">
+                            <span class="day">@item.StartDate.Day</span>
+                            <span class="month">@item.StartDate.ToString("MMM")</span>
+                            <span class="year">@item.StartDate.Year</span>
+                        </div>
+                        <ul class="menu-content">
+                            <li><a href="#" class="far fa-heart"><span>@item.Rating.Value.ToString("0.##")</span></a></li>
+                            <li><a href="#" class="far fa-comment"><span>@item.CountOfComments</span></a></li>
+                        </ul>
+                    </div>
+                    <div class="data">
+                        <div class="content">
+                            <span class="author">Created by: @item.CreatedBy</span>
+                            <h3 class="title"><a href="@Url.Action("Read", "Events", new {id = item.Id})">@item.Name</a></h3>
+                            <p class="text">
+                                @if (item.Description.Length > 100)
+                                {@item.Description.Substring(0, 100).Insert(100, "...")}
+                            else
+                            {@item.Description}
+                            </p>
+                            <a href="@Url.Action("Read", "Events", new {id = item.Id})" class="button">Read more</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

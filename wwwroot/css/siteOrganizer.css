@@ -1,0 +1,290 @@
+﻿.kontejner {
+    min-height: 100%;
+    min-width: 100%;
+    width: 100%;
+    position: absolute;
+    display: inline-block;
+}
+
+/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification\ 
+for details on configuring this project to bundle and minify static web assets. */
+body {
+    padding-top: 50px;
+    padding-bottom: 0px;
+    background-color: rgba(215, 225, 232, 0.25098039215686274);
+}
+
+/* Wrapping element */
+/* Set some basic padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.formaGridMarginTop {
+    margin-top: 50px;
+    background-color: rgba(0, 148, 255, 0);
+}
+
+.formaWellPozadina {
+    background-color: rgba(0, 148, 255, 0.2);
+    border-color: rgba(178, 0, 255, 1);
+}
+
+.eventCardie {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    border: 5px solid rgb(139,69,19);
+    border-radius: 20px;
+    z-index: 10;
+    background-color: rgb(250,240,230);
+    text-align: center;
+    color: white;
+    font-family: 'Sedgwick Ave', cursive;
+}
+
+    .eventCardie > p {
+        color: white;
+    }
+
+.eventFormTitle {
+    font-family: 'Sedgwick Ave', cursive;
+    font-size: 1.8em;
+    height: 5%;
+    color: white;
+}
+
+.eventFormDescription {
+    font-family: 'Sedgwick Ave', cursive;
+    font-size: 0.8em;
+    color: white;
+    z-index: 500;
+    background: transparent;
+    outline: none;
+    text-align: center;
+    width: 80%;
+    border: none;
+    display: none;
+}
+
+.eventButtons {
+    display: none;
+}
+
+.eventCardie:hover .eventButtons, .eventFormDescription {
+    display: inline-block;
+}
+
+.cardBS {
+    /*background-color: rgba(0, 148, 255, 0.2);
+    border-color: rgba(178, 0, 255, 1);
+    border-radius: 30px;*/
+    height: 400px;
+    padding: 10px;
+}
+
+.cardBSInner {
+    background-color: rgba(255, 0, 0, 0.2);
+    height: 100%;
+    width: 100%;
+    border-radius: 30px;
+}
+
+.cardContentUpper {
+    /*background-color: rgba(255, 216, 0, 0.2);*/
+    height: 50%;
+    width: 100%;
+    z-index: -1;
+}
+
+.cardContentLower {
+    /*background-color: rgb(0, 255, 33, 0.2);*/
+    height: 50%;
+    width: 100%;
+    text-align: center;
+    color: white;
+}
+
+
+.cardContentLowerTop {
+    height: 60%;
+}
+
+.cardContentLowerBottom {
+    /*background-color: rgba(255, 216, 0, 0.2);*/
+    height: 40%;
+    display: none;
+}
+
+.cardBSInner:hover .cardContentLowerBottom {
+    display: block;
+}
+
+.cardBSInner:hover {
+    background-color: rgba(255, 0, 0, 0.3);
+}
+
+.btnCustomVenue {
+    background-color: rgba(255, 0, 0, 0.2);
+    border-color: rgba(255, 0, 0, 0.6);
+    z-index: 1000;
+}
+
+    .btnCustomVenue:hover {
+        background-color: rgba(255, 0, 0, 0.6);
+        color: white;
+        z-index: 1000;
+    }
+
+.btnCustomEvent {
+    background-color: rgba(139, 69, 19, 0.2);
+    border-color: rgba(139, 69, 19, 0.6);
+    color: white;
+    z-index: 1000;
+}
+
+    .btnCustomEvent:hover {
+        background-color: rgba(139, 69, 19, 0.6);
+        color: white;
+        z-index: 1000;
+    }
+
+.customImgOpacity {
+    opacity: 0.95;
+}
+
+.cardBSInner:hover .customImgOpacity {
+    opacity: 1;
+}
+
+label {
+    font-size: larger;
+    text-align: center;
+    color: white;
+    z-index: 1000;
+}
+
+.btn-group > a {
+    text-decoration: none;
+    color: white;
+    z-index: 100;
+}
+
+.nema {
+    border-color: rgba(178, 0, 255, 0);
+}
+
+footer {
+    color: rgba(255, 255, 255, 0.4);
+}
+
+.nav > li > a:hover {
+    border-bottom: 1px solid rgba(178, 0, 255, 1);
+    font-size: 1.2em;
+    transition: font-size 0.4s;
+}
+
+.nav > li > a {
+    font-size: 1em;
+    transition: font-size 0.4s;
+}
+
+.TopUpButtonPrompt {
+    border: 0px solid red;
+    border-radius: 10px;
+    border: 2px solid rgb(43, 234, 222);
+}
+
+    .TopUpButtonPrompt:hover {
+        border: 2px solid rgb(43, 234, 222);
+    }
+
+    .creditsAmount {
+        font-size: 1.5em;
+    }
+
+.myfooter {
+    position: absolute;
+    height: 5%;
+    width: 100%;
+    color: white;
+    bottom: 0;
+    margin: 0;
+}
+
+.dashboard-info {
+    padding: 3% 0 0 10%;
+}
+
+    .dashboard-info > p {
+        color: white;
+        font-size: 3.5em;
+        font-weight: bold;
+    }
+
+        .dashboard-info > p:nth-child(2) {
+            padding-left: 5%;
+        }
+
+/* navbar start */
+
+
+
+.navbar-header,
+.nav-bar-item {
+    font-size: 15px;
+    line-height: 1;
+    width: auto;
+    border: none;
+    display: inline-block;
+    outline: 0;
+    color: white;
+    text-decoration: none;
+}
+
+.navbar-inverse .navbar-brand:hover, .navbar-inverse .navbar-brand:focus,
+.navbar-inverse .navbar-nav > li > a:hover, .navbar-inverse .navbar-nav > li > a:focus {
+    color: white;
+}
+
+    .nav-bar-item-right {
+        float: right !important;
+    }
+
+/* navbar end */
+
+.navbar-nav > li > a {
+    color: white !important;
+    z-index: 100000000;
+
+}
+
+.navbar-brand {
+    color: white;
+}
+
+.navbar a {
+    color: white !important;
+    z-index: 500;
+}
+
+table {
+    text-align: center;
+}
+
+.glyphicon-bitcoin {
+    color: gold;
+    z-index: 100;
+}
+
+.rowTopUp:hover {
+    background: rgba(155, 109, 109, 0.65);
+}
+
+.VenueError {
+    color: red;
+    background: white;
+    border: 0px solid red;
+    margin: 5px;
+}

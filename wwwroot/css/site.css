@@ -1,0 +1,404 @@
+﻿.kontejner {
+    min-height: 100%;
+    min-width: 100%;
+    width: 100%;
+    position: absolute;
+    display: inline-block;
+}
+
+/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification\ 
+for details on configuring this project to bundle and minify static web assets. */
+body {
+    padding-top: 50px;
+    padding-bottom: 0px;
+    background-color: rgba(215, 225, 232, 0.25098039215686274);
+}
+
+/* Wrapping element */
+/* Set some basic padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.formaGridMarginTop {
+    margin-top: 50px;
+    background-color: rgba(0, 148, 255, 0);
+}
+
+.formaWellPozadina {
+    background-color: rgba(0, 148, 255, 0.2);
+    border-color: rgba(178, 0, 255, 1);
+}
+
+.eventCardie {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    border: 5px solid rgb(139,69,19);
+    border-radius: 20px;
+    z-index: 10;
+    background-color: rgb(250,240,230);
+    text-align: center;
+    color: white;
+    font-family: 'Sedgwick Ave', cursive;
+}
+
+    .eventCardie > p {
+        color: white;
+    }
+
+.eventFormTitle {
+    font-family: 'Sedgwick Ave', cursive;
+    font-size: 1.8em;
+    height: 5%;
+    color: white;
+}
+
+.eventFormDescription {
+    font-family: 'Sedgwick Ave', cursive;
+    font-size: 0.8em;
+    color: white;
+    z-index: 500;
+    background: transparent;
+    outline: none;
+    text-align: center;
+    width: 80%;
+    border: none;
+    display: none;
+}
+
+.eventButtons {
+    display: none;
+}
+
+.eventCardie:hover .eventButtons, .eventFormDescription {
+    display: inline-block;
+}
+
+.cardBS {
+    /*background-color: rgba(0, 148, 255, 0.2);
+    border-color: rgba(178, 0, 255, 1);
+    border-radius: 30px;*/
+    height: 400px;
+    padding: 10px;
+}
+
+.cardBSInner {
+    background-color: rgba(255, 0, 0, 0.2);
+    height: 100%;
+    width: 100%;
+    border-radius: 30px;
+}
+
+.cardContentUpper {
+    /*background-color: rgba(255, 216, 0, 0.2);*/
+    height: 50%;
+    width: 100%;
+    z-index: -1;
+}
+
+.cardContentLower {
+    /*background-color: rgb(0, 255, 33, 0.2);*/
+    height: 50%;
+    width: 100%;
+    text-align: center;
+    color: white;
+}
+
+
+.cardContentLowerTop {
+    height: 60%;
+}
+
+.cardContentLowerBottom {
+    /*background-color: rgba(255, 216, 0, 0.2);*/
+    height: 40%;
+    display: none;
+}
+
+.cardBSInner:hover .cardContentLowerBottom {
+    display: block;
+}
+
+.cardBSInner:hover {
+    background-color: rgba(255, 0, 0, 0.3);
+}
+
+.btnCustomVenue {
+    background-color: rgba(255, 0, 0, 0.2);
+    border-color: rgba(255, 0, 0, 0.6);
+    z-index: 1000;
+}
+
+    .btnCustomVenue:hover {
+        background-color: rgba(255, 0, 0, 0.6);
+        color: white;
+        z-index: 1000;
+    }
+
+.btnCustomEvent {
+    background-color: rgba(139, 69, 19, 0.2);
+    border-color: rgba(139, 69, 19, 0.6);
+    color: white;
+    z-index: 1000;
+}
+
+    .btnCustomEvent:hover {
+        background-color: rgba(139, 69, 19, 0.6);
+        color: white;
+        z-index: 1000;
+    }
+
+.customImgOpacity {
+    opacity: 0.95;
+}
+
+.cardBSInner:hover .customImgOpacity {
+    opacity: 1;
+}
+
+label {
+    font-size: larger;
+    text-align: center;
+    color: white;
+    z-index: 1000;
+}
+
+.btn-group > a {
+    text-decoration: none;
+    color: white;
+    z-index: 100;
+}
+
+.nema {
+    border-color: rgba(178, 0, 255, 0);
+}
+
+footer {
+    color: rgba(255, 255, 255, 0.4);
+}
+
+.myfooter {
+    position: absolute;
+    height: 5%;
+    width: 100%;
+    color: white;
+    bottom: 0;
+    margin: 0;
+}
+
+.dashboard-info {
+    padding: 0 0 0 10%;
+}
+
+    .dashboard-info > p {
+        color: #fff;
+        font-size: 3.5em;
+        font-weight: bold;
+    }
+
+        .dashboard-info > p:nth-child(2) {
+            padding-left: 5%;
+        }
+
+/* navbar start */
+
+.nav-bar {
+    background-color: #080808;
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16), 0 2px 10px 0 rgba(0,0,0,0.12);
+}
+
+.navbar-header,
+.nav-bar-item {
+    font-size: 15px;
+    line-height: 1;
+    width: auto;
+    border: none;
+    display: inline-block;
+    outline: 0;
+    color: #000;
+    text-decoration: none;
+}
+
+.navbar-inverse .navbar-brand:hover, .navbar-inverse .navbar-brand:focus,
+.navbar-inverse .navbar-nav > li > a:hover, .navbar-inverse .navbar-nav > li > a:focus {
+    color: #fff;
+}
+
+.nav-bar-item-right {
+    float: right !important;
+}
+
+/* navbar end */
+
+
+.easy-autocomplete-container {
+    top: 35px;
+}
+
+.notification-count {
+    top: 14px;
+    position: relative;
+    cursor: pointer;
+}
+
+.popover {
+    width: 500px;
+    cursor: pointer;
+    z-index: 100000;
+}
+
+.comment-text {
+    background-color: transparent !important;
+    border: none !important;
+    border-bottom: 1px solid #fff !important;
+    font-size: smaller !important;
+    font-style: italic !important;
+    color: #ddd !important;
+    width: 500px;
+    margin-right: 5%;
+}
+
+#comment-div > div.comment-table > table {
+    border: none;
+    width: 90%;
+}
+
+    #comment-div > div.comment-table > table > tbody > tr > td {
+        border: none;
+    }
+
+        #comment-div > div.comment-table > table > tbody > tr:nth-child(1) > td:nth-child(1) {
+            width: 100px;
+        }
+
+.comment-table {
+    height: 150px;
+    overflow-y: scroll;
+    border-bottom: 1px solid #ffffff;
+    width: 500px;
+}
+
+
+/* Modal start */
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    padding-top: 100px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
+}
+
+.modal-content {
+    background-color: rgba(0, 0, 0, 0.76);
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 400px;
+    text-align: center;
+}
+
+.close {
+    color: #ffffff;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    margin-top: -15px;
+}
+
+    .close:hover,
+    .close:focus {
+        color: #ffffff;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+.modal-content > img {
+    height: 200px;
+}
+
+.modal-content > form > textarea {
+    width: 100%;
+    height: 100px;
+    background-color: rgba(0, 0, 0, 0.76);
+    color: #ffffff;
+    margin-bottom: 5%;
+}
+
+.snap {
+    font-size: 28px;
+    color: #ffffff;
+    margin-top: 5%;
+}
+
+/* Modal end */
+
+#contact-button {
+    margin-top: 2%;
+    float: right;
+}
+
+.txt-center {
+    text-align: center;
+}
+
+.hide {
+    display: none;
+}
+
+.clear {
+    float: none;
+    clear: both;
+}
+
+.rating {
+    float: left;
+    unicode-bidi: bidi-override;
+    direction: rtl;
+    text-align: center;
+    position: relative;
+    margin-top: 2%;
+    width: 100px;
+}
+
+    .rating > label {
+        float: right;
+        display: inline;
+        padding: 0;
+        margin: 0;
+        position: relative;
+        width: 1.1em;
+        cursor: pointer;
+        color: #ffffff;
+    }
+
+        .rating > label:hover,
+        .rating > label:hover ~ label,
+        .rating > input.radio-btn:checked ~ label {
+            color: transparent;
+        }
+
+            .rating > label:hover:before,
+            .rating > label:hover ~ label:before,
+            .rating > input.radio-btn:checked ~ label:before,
+            .rating > input.radio-btn:checked ~ label:before {
+                content: "\2605";
+                position: absolute;
+                left: 0;
+                color: #FFD700;
+            }
+
+#rating-form {
+    float: left;
+    margin-top: 2%;
+    margin-left: 2%;
+    width: 200px;
+}

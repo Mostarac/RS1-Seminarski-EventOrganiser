@@ -1,0 +1,10 @@
+﻿@model WalletVm
+<br />
+<center><p style="font-size: 1.5em">Card number</p></center>
+<form id="form1" asp-action="TopUp" asp-controller="Wallet" ajax-poziv="da" ajax-rezultat="ajaxDiv">
+    <input type="text" asp-for="CardCode" class="form-control" />
+    <br />
+    <br />
+    <input class="btn btn-primary" type="submit" value="Top Up!" />
+</form>
+<br />

@@ -1,0 +1,28 @@
+﻿@model LoginModel
+@{
+    Layout = "_Layout";
+    ViewData["_layoutBackgroundImg-key"] = "linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ),url('../../images/bar-blur-blurred-801863.jpg')";
+}
+
+<div class="user-login col-md-offset-4 col-md-4">
+    <div class="row">
+
+        <div><h4>Login</h4></div>
+
+        <form asp-action="Login" method="post">
+            <input type="hidden" name="returnUrl" value="@ViewBag.returnUrl" />
+            <div class="form-group">
+                <label asp-for="Email"></label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Password"></label>
+                <input asp-for="Password" class="form-control" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            <button class="user-info-button" type="submit">Log In</button>
+        </form>
+
+    </div>
+</div>

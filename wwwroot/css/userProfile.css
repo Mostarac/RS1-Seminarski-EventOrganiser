@@ -1,0 +1,64 @@
+﻿.user-profile {
+    padding: 15px;
+    color: #fff;
+    z-index: 100000;
+}
+
+.user-profile > title {
+    font-weight: bold;
+}
+
+.user-info > form > .form-group > label {
+    color: #000;
+    font-size: 15px;
+    color: #fff;
+    font-weight: normal;
+}
+
+.user-info > form > .form-group > .form-control {
+    border-radius: 0;
+}
+
+.user-info-button {
+    display: inline-block;
+    padding: 0.35em 1.2em;
+    border: 0.1em solid #646363;
+    margin: 0 0.3em 0.3em 0;
+    border-radius: 0.12em;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-family: 'Roboto',sans-serif;
+    font-weight: 300;
+    color: #646363;
+    text-align: center;
+    transition: all 0.2s;
+    background-color: transparent;
+}
+    .user-info-button:hover {
+        color: #fff;
+        border: 0.1em solid #fff;
+    }
+
+.comment-info-button {
+    display: inline-block;
+    padding: 0.35em 1.2em;
+    border: 0.1em solid #fff;
+    margin: 0 0.3em 0.3em 0;
+    border-radius: 0.12em;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-family: 'Roboto',sans-serif;
+    font-weight: 300;
+    color: #fff;
+    text-align: center;
+    transition: all 0.2s;
+    background-color: transparent;
+}
+
+@media all and (max-width:30em){
+    .user-info-button,
+    .comment-info-button {
+        display: block;
+        margin: 0.4em auto;
+    }
+}

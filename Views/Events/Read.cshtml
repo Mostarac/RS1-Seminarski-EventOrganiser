@@ -1,0 +1,113 @@
+﻿@model webapp.ViewModels.EventVm
+@{
+    ViewData["Title"] = "Details";
+    Layout = "_Layout";
+    ViewData["_layoutBackgroundImg-key"] = "linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(" + Model.ImageUrl + ")";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Read</title>
+</head>
+<body>
+    <div class="col-md-12">
+        <div class="col-md-6 event-container">
+            <div class="example event-card">
+                <div class="wrapper event-wrapper" style="background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url(@Model.ImageUrl); background-position: center;">
+                    <div class="event-card-text">
+                        <p>@Model.StartDate.ToString("dddd")</p>
+                        <p>@Model.StartDate.ToString("MM")</p>
+                        <p>@Model.StartDate.ToString("MMMM")</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="txt-center">
+                <form method="post" id="rating-form">
+                    <div class="rating">
+                        <input type="hidden" asp-for="@Model.Id" />
+                        <input id="star5" name="Rating" type="radio" value="5" class="radio-btn hide" />
+                        <label for="star5">☆</label>
+                        <input id="star4" name="Rating" type="radio" value="4" class="radio-btn hide" />
+                        <label for="star4">☆</label>
+                        <input id="star3" name="Rating" type="radio" value="3" class="radio-btn hide" />
+                        <label for="star3">☆</label>
+                        <input id="star2" name="Rating" type="radio" value="2" class="radio-btn hide" />
+                        <label for="star2">☆</label>
+                        <input id="star1" name="Rating" type="radio" value="1" class="radio-btn hide" />
+                        <label for="star1">☆</label>
+                        <div class="clear"></div>
+                    </div>
+                    <input id="rating-form-button" class="comment-info-button" type='submit' value='Submit' />
+                </form>
+            </div>
+
+            <button id="contact-button" class="comment-info-button">Contact</button>
+
+            <div id="content-slider" class="content-slider content-slider-event">
+                @foreach (var item in Model.SimilarEvents)
+                {
+                    <a href="@Url.Action("Read", "Events", new {id = item.Id})" class="button">
+                        <div class="example similar-event-card">
+                            <div class="wrapper" style="background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),url(@item.ImageUrl) center/cover no-repeat">
+                                <div class="header">
+                                    <p>@item.Name</p>
+                                </div>
+                                <div class="data">
+                                    <div class="content">
+                                        Read more
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                }
+            </div>
+        </div>
+
+        <div class="col-md-6 event-description">
+            <div>
+                <h1>@Model.Name</h1> @if (!String.IsNullOrEmpty(Model.TicketLink))
+                {<a href="@Model.TicketLink" target="_blank" class="buy-button comment-info-button">Buy</a>}
+            </div>
+            <br />
+            <p>@Model.Description</p>
+            <br />
+            <p>Where? @Model.Venue with capacity of @Model.Capacity</p>
+            <br />
+            <p>When? @Model.StartDate.ToString("MM/dd/yyyy")</p>
+            <br />
+            <p>Till? @Model.EndDate.ToString("MM/dd/yyyy")</p>
+            <br />
+            <p>Location? @Model.Street in @Model.City, @Model.Country</p>
+            <br />
+            <div id="comment-div" class="event-comments">
+            </div>
+        </div>
+    </div>
+
+    <div id="messageModal" class="modal">
+        <div class="modal-content">
+            <span onclick="closeModal()" class="close">&times;</span>
+            <p class="snap">Contact event organizer!</p>
+            <form id="contact-form">
+                <input id="eventId" type="hidden" asp-for="@Model.Id" />
+                <textarea id="message" asp-for="@Model.Message" placeholder="Start typing..." ></textarea>
+                <input id="submit-contact-form" class="comment-info-button" type='submit' value='Submit' />
+            </form>
+        </div>
+    </div>
+    <script>
+        $(document).ready(function () {
+        $.get("@Url.Action("Index", "Comments", new { eventId = Model.Id})", function (data) {
+            $("#comment-div").html(data);
+        });
+    });
+    </script>
+</body>
+</html>
+

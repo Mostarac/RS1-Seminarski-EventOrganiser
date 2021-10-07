@@ -1,0 +1,31 @@
+﻿@{
+    var modeli = (List<VenueIndexVM>)ViewData["VenueIVM-key"];
+}
+
+@foreach (var x in modeli)
+{
+    <div class="col-md-3 cardBS">
+        <div class="cardBSInner">
+            <div class="cardContentUpper" style="background-image: url('../images/venues/@x.ImageUrl'); background-size: cover">
+                
+            </div>
+            <div class="cardContentLower">
+                <div class="cardContentLowerTop">
+                    <p>@x.Venuetype</p>
+                    <h3><p>@x.Name</p></h3>
+                    <i class="glyphicon glyphicon-user"></i>@x.Capacity
+                </div>
+                <div class="cardContentLowerBottom">
+                    <i>ul. @x.StreetName</i>
+                    <br />
+                    <i>@x.CityName, @x.CountryName</i>
+                    <br />
+                    <div class="btn-group">
+                        <a href="../Organizer/Venue/Edit?Id=@x.VenueID" class="btn btnCustomVenue"><i class="glyphicon glyphicon-cog"></i>Edit</a>
+                        <a href="../Organizer/Venue/DeleteVenue/?Id=@x.VenueID" class="btn btnCustomVenue"><i class="glyphicon glyphicon-trash"></i>Delete</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}

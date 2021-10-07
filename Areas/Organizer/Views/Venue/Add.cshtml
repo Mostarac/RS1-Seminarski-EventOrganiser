@@ -1,0 +1,82 @@
+﻿@model VenueViewModel
+@{
+    var venueTypes = (List<VenueType>)ViewData["venueTypes-key"];
+    var addresses = (List<Address>)ViewData["addresses-key"];
+    var cities = (List<City>)ViewData["cities-key"];
+    var countries = (List<Country>)ViewData["countries-key"];
+}
+
+<div class="col-md-4 col-md-offset-4 formaGridMarginTop">
+    <div class="well formaWellPozadina">
+        <form action="AddVenue" method="POST" enctype="multipart/form-data">
+            <center><label><h2>Add Venue</h2></label></center>
+            <br />
+            <br />
+            <br />
+            <div class="form-group">
+                <center><label asp-for="Name">Name</label></center>
+                <input type="text" asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="VenueError"></span>
+            </div>
+            <br />
+            <div class="form-group">
+                <center><label asp-for="Picture">Img Url</label></center>
+                <input asp-for="Picture" class="form-control" />
+            </div>
+            <br />
+            <div class="form-group">
+                <center><label asp-for="Capacity">Capacity</label></center>
+                <input type="text" asp-for="Capacity" class="form-control" />
+                <span asp-validation-for="Capacity" class="VenueError"></span>
+            </div>
+            <br />
+            <div class="form-group">
+                <center><label asp-for="VenueTypeID">Venue type</label></center>
+                <select asp-for="VenueTypeID" class="form-control">
+                    <option value="" selected disabled hidden>Choose venue type</option>
+                    @foreach (var x in venueTypes)
+                    {
+                        <option value="@x.Id">@x.Name</option>
+                    }
+                </select>
+                <span asp-validation-for="VenueTypeID" class="VenueError"></span>
+            </div>
+            <br />
+            <div class="form-group">
+                <center><label asp-for="StreetID">Address</label></center>
+                <select asp-for="StreetID" class="form-control">
+                    <option value="" selected disabled hidden>Choose address</option>
+                    @foreach (var a in countries)
+                    {
+                        <optgroup label="--@a.Name--">
+                            @foreach (var b in cities)
+                            {
+                                @if (a.Id == b.CountryId)
+                                {
+                                    <optgroup label="-@b.Name-">
+                                        @foreach (var x in addresses)
+                                        {
+                                            @if (b.Id == x.CityId)
+                                            {
+                                                <option value="@x.Id">@x.Street @x.Code</option>
+                                            }
+
+                                        }
+                                    </optgroup>
+                                }
+                            }
+                        </optgroup>
+                    }
+                </select>
+                <span asp-validation-for="StreetID" class="VenueError"></span>
+            </div>
+            <br />
+            <div>
+                <br />
+
+                <center><input type="submit" value="Add venue" class="btn btn-primary" /></center>
+            </div>
+            <br />
+        </form>
+    </div>
+</div>

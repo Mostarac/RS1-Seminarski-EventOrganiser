@@ -1,0 +1,168 @@
+﻿@model EventAddVmEM
+@functions {
+
+    /*ova funkcija postoji jer datetime-local input prima iskljucivo yyyy-MM-ddThh:mm fomat
+     za koji klasa DateTime nema metodu, a preuzimanje jednocifrenog broja rusi format, tako da se
+     string mora izgraditi uz pomoc funkcije*/
+
+    string DoubleDigit (int Number)
+    {
+
+        if(Number<10)
+        {
+            return "0" + Number.ToString();
+        }
+        else
+        {
+            return Number.ToString();
+        }
+
+    }
+}
+@{
+    Layout = null;
+
+    var venues = (List<Venue>)ViewData["venues-key"];
+    var eventTypes = (List<EventType>)ViewData["eventTypes-key"];
+    var eventEdit = (Event)ViewData["eventEdit-key"];
+    var textareaContent = (string)ViewData["textarea-key"];
+
+}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link href='https://fonts.googleapis.com/css?family=Arbutus' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Anton' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Sedgwick+Ave' rel='stylesheet'>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Add event</title>
+    <link rel="stylesheet" type="text/css" href="~/EventStage/EventStage.css">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no,viewport-fit=cover">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+</head>
+
+<body>
+
+    <div class="aspectratio">
+        <div class="pagewrapper">
+
+            <div class="skyDIV">
+                <img src="~/EventStage/Textures/Cloud2.png" class="cloud2IMG" />
+                <img src="~/EventStage/Textures/Sun.png" class="sunIMG" />
+                <img src="~/EventStage/Textures/Cloud4.png" class="cloud4IMG" />
+                <img src="~/EventStage/Textures/Cloud5.png" class="cloud5IMG" />
+                <img src="~/EventStage/Textures/Parrot2.png" class="parrot2IMG" />
+            </div>
+
+
+            <div class="mainDIV">
+
+                <div class="topMD"></div>
+
+                <div class="middleMD">
+
+                    <div class="brickwall">
+                        <img src="~/EventStage/Textures/BrickWall.png" class="brickwallIMG" />
+                        <div class="entryFORM" id="ajaxDiv">
+                            <form asp-action="EditEvent" asp-controller="Event" asp-area="Organizer" class="ifKlasa" method="POST" ajax-poziv="da" ajax-rezultat="ajaxDiv">
+                                <input asp-for="Id" type="hidden" value="@eventEdit.Id">
+                                <br />
+                                <select asp-for="EventTypeID">
+                                    @foreach (var x in eventTypes)
+                                    {
+
+                                        @if (x.Id == eventEdit.EventTypeId)
+                                        {
+                                            <option value="@x.Id" selected>@x.Name</option>
+                                        }
+                                        else
+                                        {
+                                            <option value="@x.Id">@x.Name</option>
+                                        }
+
+                                    }
+                                </select>
+                                <br />
+                                <input type="text" asp-for="Name" placeholder="Event name" class="eventFormTitle" value="@eventEdit.Name" />
+                                <br />
+                                <select asp-for="VenueID">
+                                    <option value="" selected disabled hidden>Choose the venue</option>
+                                    @foreach (var x in venues)
+                                    {
+
+                                        @if (x.Id == eventEdit.VenueId)
+                                        {
+                                            <option value="@x.Id" selected>@(x.VenueType.Name + " " + x.Name)</option>
+                                        }
+                                        else
+                                        {
+                                            <option value="@x.Id">@(x.VenueType.Name + " " + x.Name)</option>
+                                        }
+
+                                    }
+                                </select>
+                                <br />
+                                <label asp-for="Picture"></label>
+                                <center><input style="width: 60%;" asp-for="Picture" /></center>
+                                <input type="hidden" asp-for="ImageUrl" placeholder="Image Url" value="@eventEdit.ImageUrl" />
+                                <br /><br />
+                                <textarea asp-for="Description" rows="6" style="resize: none;" placeholder="&#13&#10&#13&#10&#13&#10Event description" class="eventFormDescription myTextArea"></textarea>
+                                <br />
+                                <input type="datetime-local" asp-for="StartDate" value="@(eventEdit.StartDate.Year + "-" + DoubleDigit(eventEdit.StartDate.Month) + "-" + DoubleDigit(eventEdit.StartDate.Day) + "T" + DoubleDigit(eventEdit.StartDate.Hour) + ":" + DoubleDigit(eventEdit.StartDate.Minute))" class="startDate DatePickerCustom" />
+                                <br />
+                                <input type="datetime-local" asp-for="EndDate" value="@(eventEdit.EndDate.Year + "-" + DoubleDigit(eventEdit.EndDate.Month) + "-" + DoubleDigit(eventEdit.EndDate.Day) + "T" + DoubleDigit(eventEdit.EndDate.Hour) + ":" + DoubleDigit(eventEdit.EndDate.Minute))" class="endDate DatePickerCustom" />
+                                <br />
+                                <br />
+                                <input type="submit" value="Save and proceed to gear rent" />
+                            </form>
+                        </div>
+                    </div>
+
+                    <div class="wrapperIMG">
+
+                        <img src="~/EventStage/StageEquipment/Stage.png" class="stageIMG" />
+                        <img src="~/EventStage/Textures/Beach.svg" class="beachIMG" />
+
+                        <div class="grass">
+
+                        </div>
+
+                    </div>
+                </div>
+
+                <img src="~/EventStage/Textures/Road.png" class="roadIMG" />
+
+            </div>
+
+
+        </div>
+
+    </div>
+    <script src="~/EventStage/EventStage.js">
+    </script>
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-3.3.1.min.js"
+            asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
+            asp-fallback-test="window.jQuery">
+    </script>
+    <script src="~/js/jsFIT.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+
+    <partial name="_ValidationScriptsPartial" />
+
+    <script>
+        let text = "@{WriteLiteral(eventEdit.Description);}";
+        $(".myTextArea").val(text);
+    </script>
+
+</body>
+
+</html>

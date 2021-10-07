@@ -1,0 +1,12 @@
+﻿
+@{
+    var eventId = (int)ViewData["eventId-key"];
+    var resultString = (string)ViewData["resultString-key"];
+}
+
+<div style="transform: translate(0, 90%);">
+    <center><h3 style="color: red;">@resultString</h3></center>
+
+    <center><a class="btn btn-primary" href="../RentaGear/Index?eventId=@eventId" ajax-poziv="da" ajax-rezultat="ajaxDiv">Back to Rent-a-gear panel</a></center>
+    <center><a class="btn btn-success" href="../Event">Continue to Events</a></center>
+</div>

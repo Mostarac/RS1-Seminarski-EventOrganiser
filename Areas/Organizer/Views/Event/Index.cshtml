@@ -1,0 +1,34 @@
+﻿
+@{
+    var events = (List<EventIndexVmEM>)ViewData["eventsIndexList-key"];
+}
+
+@foreach (var x in events)
+{
+<div class="col-md-3 cardBS">
+    <div class="eventCardie" style="background-image: url('../images/events/@x.ImageUrl'); background-size: cover">
+
+        <br />
+        <p>@x.EventType</p>
+        <p class="eventFormTitle">@x.Name</p>
+        <br />
+        <p>@(x.VenueType + " " + x.Venue)</p>
+        <br />
+        <textarea class="eventFormDescription" rows="6" style="resize: none;" readonly>@x.Description</textarea>
+        <br />
+        <p><i class="glyphicon glyphicon-play"></i> @x.StartDate.ToShortDateString() &nbsp; @x.StartDate.ToShortTimeString()</p>
+        <br />
+        <p><i class="glyphicon glyphicon-stop"></i> @x.EndDate.ToShortDateString() &nbsp; @x.EndDate.ToShortTimeString()</p>
+
+
+
+        <div class="btn-group eventButtons">
+            <a href="../Organizer/Event/Edit?Id=@x.Id" class="btn btnCustomEvent"><i class="glyphicon glyphicon-cog"></i>Edit</a>
+            <a href="../Organizer/Event/Delete?Id=@x.Id" class="btn btnCustomEvent"><i class="glyphicon glyphicon-trash"></i>Delete</a>
+        </div>
+
+
+    </div>
+</div>
+        
+}

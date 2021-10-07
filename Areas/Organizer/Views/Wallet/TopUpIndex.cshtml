@@ -1,0 +1,24 @@
+﻿
+@{
+    var topUps = (List<TopUp>)ViewData["topUps-key"];
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th><center>Date</center></th>
+            <th><center>Amount</center></th>
+            <th><center>Card number</center></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var x in topUps)
+        {
+        <tr class="rowTopUp">
+            <td>@(x.TopUpDate.Day + "." + x.TopUpDate.Month + "." + x.TopUpDate.Year)</td>
+            <td>@x.TopUpCard.Amount</td>
+            <td>@x.TopUpCard.Code</td>
+        </tr>
+        }
+    </tbody>
+</table>
